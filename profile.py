@@ -87,7 +87,7 @@ enb2 = request.RawPC("enb2")
 enb2.hardware_type = NUC_HWTYPE
 enb2.component_id = params.enb2_node
 enb2.disk_image = SRSLTE_IMG
-enb2_s1_if = enb1.addInterface("enb2_s1_if")
+enb2_s1_if = enb2.addInterface("enb2_s1_if")
 enb2_s1_if.addAddress(rspec.IPv4Address("192.168.1.3", "255.255.255.0"))
 enb2.Desire("rf-controlled", 1)
 enb2_ue_rf = enb2.addInterface("enb2_ue_rf")
