@@ -61,8 +61,6 @@ cn.disk_image = UBUNTU_1804_IMG
 cn.addService(rspec.Execute(shell="bash", command=DEPLOY_OPEN5GS))
 cn_s1_if = cn.addInterface("cn_s1_if")
 cn_s1_if.addAddress(rspec.IPv4Address("192.168.1.1", "255.255.255.0"))
-cn_link = request.Link("cn_link")
-cn_link.addInterface(cn_s1_if)
 
 ue = request.RawPC("ue")
 ue.hardware_type = NUC_HWTYPE
