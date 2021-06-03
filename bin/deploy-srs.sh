@@ -1,5 +1,4 @@
 set -ex
-COMMIT_HASH=$1
 BINDIR=`dirname $0`
 source $BINDIR/common.sh
 
@@ -11,7 +10,7 @@ fi
 cd $SRCDIR
 git clone $SRS_REPO srsran
 cd srsran
-git checkout $COMMIT_HASH
+git checkout release_21_04
 mkdir build
 cd build
 cmake ../
