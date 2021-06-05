@@ -11,12 +11,13 @@ tourDescription = """
 ## srsRAN S1 Handover w/ Open5GS
 
 This profile allocates resources in a controlled RF environment for
-experimenting with LTE handover. It deploys srsRAN on three nodes in our RF
-attenuator matrix. One node serves as the UE, while the other two serve as
-"neighboring" eNBs. Since the srsRAN EPC does not support S1 handover, the
-profile also deploys Open5GS on node outside of the matrix and sets up LAN
+experimenting with LTE handover. It deploys srsRAN on three nodes, each
+consisting of a NUC5300 compute node and a B210 SDR, in our RF attenuator
+matrix. One node serves as the UE, while the other two serve as "neighboring"
+eNBs. Since the srsRAN EPC does not support S1 handover, the profile deploys
+Open5GS on a node outside of the controlled RF environment and sets up LAN
 connections between this node and both eNB nodes. A command line tool is
-provided that allows you to change the amount of attenuation on the matrix paths
+provided that allows you to change the amount of attenuation on the paths
 between the UE and both eNBs in order to simulate mobility and trigger S1
 handover events."""
 
@@ -25,7 +26,7 @@ tourInstructions = """
 Note: this profile includes startup scripts that download, install, and
 configure the required software stacks. After the experiment becomes ready, wait
 until the "Startup" column on the "List View" tab indicates that the startup
-scripts have finished on all of the nodes.
+scripts have finished on all of the nodes before proceeding.
 
 #### Overview
 
@@ -194,7 +195,7 @@ start reporting measurements for `enb2`:
 
 Next, start incrementally decreasing the attenuation for the `enb2` downlink.
 Steps of 5 or 10 dB work well. Larger steps may result in a failed handover.
-When you get 20 dB attenuation for the `enb2` downlink. The RSRP measurements
+When you get to 20 dB attenuation for the `enb2` downlink. The RSRP measurements
 will be similar for both cells:
 
 ```
@@ -231,7 +232,8 @@ HO successful
 ```
 
 Notice that the UE now indicates that it is attached to `enb2` (PCI 2) and is
-reporting measurements for `enb1` (PCI 1) as a neigbor cell.
+reporting measurements for `enb1` (PCI 1) as a neigbor cell. You can continue to
+adjust downlink attenuation levels to trigger more handover events.
 
 """
 
