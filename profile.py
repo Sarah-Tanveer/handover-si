@@ -8,7 +8,7 @@ import geni.urn as URN
 
 
 tourDescription = """
-## srsRAN S1 Handover w/ Open5GS
+### srsRAN S1 Handover w/ Open5GS
 
 This profile allocates resources in a controlled RF environment for
 experimenting with LTE handover. It deploys srsRAN on three nodes, each
@@ -125,8 +125,8 @@ Now open an SSH session on `ue` and start the srsRAN UE:
 sudo srsue
 ```
 
-The UE should immediately sync with `enb1`. Pressing `t` and <return> will cause
-`srsue` to begin printing various metrics to `stdout`:
+The UE should immediately sync with `enb1`. Pressing `t` and `<return>` will
+cause `srsue` to begin printing various metrics to `stdout`:
 
 ```
 ---------Signal----------|-----------------DL-----------------|-----------UL-----------
