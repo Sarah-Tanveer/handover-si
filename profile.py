@@ -259,15 +259,15 @@ pc.defineParameter("cn_node_type",
                    node_type)
 
 pc.defineParameter("enb1_node", "PhantomNet NUC+B210 for first eNodeB",
-                   portal.ParameterType.STRING, "", advanced=True,
+                   portal.ParameterType.STRING, "nuc2", advanced=True,
                    longDescription="Specific eNodeB node to bind to.")
 
 pc.defineParameter("enb2_node", "PhantomNet NUC+B210 for second eNodeB",
-                   portal.ParameterType.STRING, "", advanced=True,
+                   portal.ParameterType.STRING, "nuc4", advanced=True,
                    longDescription="Specific eNodeB node to bind to.")
 
 pc.defineParameter("ue_node", "PhantomNet NUC+B210 for UE",
-                   portal.ParameterType.STRING, "", advanced=True,
+                   portal.ParameterType.STRING, "nuc1", advanced=True,
                    longDescription="Specific UE node to bind to.")
 
 params = pc.bindParameters()
@@ -283,8 +283,7 @@ cn_s1_if.addAddress(rspec.IPv4Address("192.168.1.1", "255.255.255.0"))
 
 ue = request.RawPC("ue")
 ue.hardware_type = NUC_HWTYPE
-if params.ue_node:
-    ue.component_id = params.ue_node
+ue.component_id = params.ue_node
 
 ue.disk_image = SRSLTE_IMG
 ue.Desire("rf-controlled", 1)
@@ -295,8 +294,7 @@ ue.addService(rspec.Execute(shell="bash", command=TUNE_CPU))
 
 enb1 = request.RawPC("enb1")
 enb1.hardware_type = NUC_HWTYPE
-if params.enb1_node:
-    enb1.component_id = params.enb1_node
+enb1.component_id = params.enb1_node
 
 enb1.disk_image = SRSLTE_IMG
 enb1_s1_if = enb1.addInterface("enb1_s1_if")
@@ -308,8 +306,7 @@ enb1.addService(rspec.Execute(shell="bash", command=TUNE_CPU))
 
 enb2 = request.RawPC("enb2")
 enb2.hardware_type = NUC_HWTYPE
-if params.enb2_node:
-    enb2.component_id = params.enb2_node
+enb2.component_id = params.enb2_node
 
 enb2.disk_image = SRSLTE_IMG
 enb2_s1_if = enb2.addInterface("enb2_s1_if")
