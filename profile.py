@@ -283,7 +283,9 @@ cn_s1_if.addAddress(rspec.IPv4Address("192.168.1.1", "255.255.255.0"))
 
 ue = request.RawPC("ue")
 ue.hardware_type = NUC_HWTYPE
-ue.component_id = params.ue_node
+if params.ue_node:
+    ue.component_id = params.ue_node
+
 ue.disk_image = SRSLTE_IMG
 ue.Desire("rf-controlled", 1)
 ue_enb1_rf = ue.addInterface("ue_enb1_rf")
@@ -293,7 +295,9 @@ ue.addService(rspec.Execute(shell="bash", command=TUNE_CPU))
 
 enb1 = request.RawPC("enb1")
 enb1.hardware_type = NUC_HWTYPE
-enb1.component_id = params.enb1_node
+if params.enb1_node:
+    enb1.component_id = params.enb1_node
+
 enb1.disk_image = SRSLTE_IMG
 enb1_s1_if = enb1.addInterface("enb1_s1_if")
 enb1_s1_if.addAddress(rspec.IPv4Address("192.168.1.2", "255.255.255.0"))
@@ -304,7 +308,9 @@ enb1.addService(rspec.Execute(shell="bash", command=TUNE_CPU))
 
 enb2 = request.RawPC("enb2")
 enb2.hardware_type = NUC_HWTYPE
-enb2.component_id = params.enb2_node
+if params.enb2_node:
+    enb2.component_id = params.enb2_node
+
 enb2.disk_image = SRSLTE_IMG
 enb2_s1_if = enb2.addInterface("enb2_s1_if")
 enb2_s1_if.addAddress(rspec.IPv4Address("192.168.1.3", "255.255.255.0"))
