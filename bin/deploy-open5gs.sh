@@ -9,8 +9,28 @@ fi
 
 sudo apt update
 sudo apt install -y software-properties-common
-sudo add-apt-repository -y ppa:open5gs/latest
-sudo apt update
+# sudo add-apt-repository -y ppa:open5gs/latest
+
+sudo apt install mongodb
+sudo systemctl start mongodb 
+sudo systemctl enable mongodb
+sudo ip tuntap add name ogstun mode tun
+sudo ip addr add 10.45.0.1/16 dev ogstun
+sudo ip addr add 2001:230:cafe::1/48 dev ogstun
+sudo ip link set ogstun up
+sudo apt install python3-pip python3-setuptools python3-wheel ninja-build build-essential flex bison git libsctp-dev libgnutls28-dev libgcrypt-dev libssl-dev libidn11-dev libmongoc-dev libbson-dev libyaml-dev libnghttp2-dev libmicrohttpd-dev libcurl4-gnutls-dev libnghttp2-dev libtins-dev meson
+git clone https://github.com/Sarah-Tanveer/open5gs
+cd open5gs
+meson build --prefix=`pwd`/install
+ninja -C build
+./build/tests/attach/attach ## EPC Only
+./build/tests/registration/registration ## 5G Core Only
+cd build
+meson test -v
+cd build
+ninja install
+cd ../
+
 sudo apt install -y open5gs
 sudo cp /local/repository/etc/open5gs/* /etc/open5gs/
 sudo systemctl restart open5gs-mmed
