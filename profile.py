@@ -10,7 +10,7 @@ import geni.urn as URN
 tourDescription = """
 ### srsRAN S1 Handover w/ Open5GS
 ### nteractions fixed i
-### permission issue??
+### permission issue?? comment out
 
 This profile allocates resources in a controlled RF environment for
 experimenting with LTE handover. It deploys srsRAN on three nodes, each
