@@ -9,7 +9,7 @@ import geni.urn as URN
 
 tourDescription = """
 ### srsRAN S1 Handover w/ Open5GS
-### final edit
+### ioctl(TUNSETIFF): Device or resource busy
 
 This profile allocates resources in a controlled RF environment for
 experimenting with LTE handover. It deploys srsRAN on three nodes, each
