@@ -26,8 +26,8 @@ git clone https://github.com/Sarah-Tanveer/open5gs
 cd open5gs
 meson build --prefix=`pwd`/install
 ninja -C build
-# ./build/tests/attach/attach ## EPC Only
-# ./build/tests/registration/registration ## 5G Core Only
+./build/tests/attach/attach ## EPC Only
+./build/tests/registration/registration ## 5G Core Only
 cd build
 meson test -v
 cd build
