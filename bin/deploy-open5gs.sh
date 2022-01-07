@@ -14,7 +14,7 @@ sudo apt update
 sudo apt install -y software-properties-common
 # sudo add-apt-repository -y ppa:open5gs/latest
 
-sudo apt install -yq mongodb
+sudo apt install -y mongodb
 sudo systemctl start mongodb 
 sudo systemctl enable mongodb
 sudo ip tuntap add name ogstun mode tun
