@@ -2,8 +2,6 @@ set -ex
 BINDIR=`dirname $0`
 source $BINDIR/common.sh
 
-export DEBIAN_FRONTEND=noninteractive
-
 if [ -f $SRCDIR/open5gs-setup-complete ]; then
     echo "setup already ran; not running again"
     exit 0
