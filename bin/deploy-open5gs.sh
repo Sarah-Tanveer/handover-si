@@ -2,6 +2,8 @@ set -ex
 BINDIR=`dirname $0`
 source $BINDIR/common.sh
 
+export DEBIAN_FRONTEND=noninteractive
+
 if [ -f $SRCDIR/open5gs-setup-complete ]; then
     echo "setup already ran; not running again"
     exit 0
@@ -12,7 +14,7 @@ sudo apt update
 sudo apt install -y software-properties-common
 # sudo add-apt-repository -y ppa:open5gs/latest
 
-sudo apt install -y mongodb
+sudo apt install -yq mongodb
 sudo systemctl start mongodb 
 sudo systemctl enable mongodb
 sudo ip tuntap add name ogstun mode tun
