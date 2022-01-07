@@ -7,12 +7,12 @@ if [ -f $SRCDIR/open5gs-setup-complete ]; then
     exit 0
 fi
 
-cd /var
+
 sudo chown -R $USER /var
 sudo apt update
 sudo apt install -y software-properties-common
 # sudo add-apt-repository -y ppa:open5gs/latest
-
+cd /var
 sudo apt install -y mongodb
 sudo systemctl start mongodb 
 sudo systemctl enable mongodb
